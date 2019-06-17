@@ -4,7 +4,7 @@ const axios = require('axios')
 
 module.exports = app => {
     // Get new list of Articles from NHL.com
-    app.get('/articles', (req, res) => {
+    app.get('/new_articles', (req, res) => {
         axios.get('https://www.nhl.com')
             .then(({ data }) => {
                 const $ = require('cheerio').load(data)
@@ -24,6 +24,6 @@ module.exports = app => {
     })
     // Get One article from DB
     app.get('/article/:_id', (req, res) => {
-        Article.findOne({}, (e, article) => e ? console.log(e) : res.json(article))
+        Article.findById(req.params._id, (e, article) => e ? console.log(e) : res.json(article))
     })
 }
