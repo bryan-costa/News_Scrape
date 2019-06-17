@@ -1,3 +1,3 @@
-module.exports = _ => {
-    require('./news')
+module.exports = app => {
+    require('./articleRoutes')(app)
 }
